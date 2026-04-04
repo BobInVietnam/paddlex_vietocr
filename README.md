@@ -14,6 +14,21 @@ Sau khi cài xong, chạy server bằng python
 cd paddlex_vietocr
 python3 server.py
 ```
+## Docker
+Yêu cầu: 
+- Cần native Docker Engine hoặc Docker Desktop của Windows, Mac
+- Máy có hỗ trợ GPU
+
+Cài image bằng lệnh dưới đây
+```
+docker build -t vietpaddle-server:v1 .
+```
+
+Chạy bằng lệnh dưới đây
+```
+docker run -d --name ocr_api_container --gpus all -p 8000:8000 vietpaddle-server:v1
+```
+
 Route /predict của server dùng để tải lên 1 file ảnh (.png, .jpg) và trả về 1 file .json chứa tập hợp các dòng nhận diện được.
 
 **Ví dụ: sử dụng curl để tải ảnh lên**
